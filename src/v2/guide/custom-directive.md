@@ -8,7 +8,7 @@ order: 302
 
 <div class="vueschool"><a href="https://vueschool.io/lessons/create-vuejs-directive?friend=vuejs" target="_blank" rel="sponsored noopener" title="Free Vue.js Custom Directives lesson">Watch a free video lesson on Vue School</a></div>
 
-除了核心功能默认内置的指令 (`v-model` 和 `v-show`)，Vue 也允许注册自定义指令。注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
+除了核心功能默认内置的指令 (`v-model` 和 `v-show`)，Vue 也允许注册自定义指令。注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，在某些情况下，你可能需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
 
 {% raw %}
 <div id="simplest-directive-example" class="demo">
@@ -26,7 +26,7 @@ new Vue({
 </script>
 {% endraw %}
 
-当页面加载时，该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。现在让我们用指令来实现这个功能：
+当页面加载时，该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。现在，让我们来编写完成这个功能的指令：
 
 ``` js
 // 注册一个全局自定义指令 `v-focus`
@@ -38,8 +38,7 @@ Vue.directive('focus', {
   }
 })
 ```
-
-如果想注册局部指令，组件中也接受一个 `directives` 的选项：
+如果要改为在本地注册指令，则组件也可以接受一个 `directives` 的选项：
 
 ``` js
 directives: {
@@ -52,7 +51,7 @@ directives: {
 }
 ```
 
-然后你可以在模板中任何元素上使用新的 `v-focus` 属性，如下：
+然后，在模板中，你就可以在任何元素上使用新的 `v-focus` 属性，如下：
 
 ``` html
 <input v-focus>
